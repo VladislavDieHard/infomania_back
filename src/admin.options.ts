@@ -33,6 +33,7 @@ const adminOptions = {
           },
           edit: {
             before: async (request) => {
+              console.log(request.payload)
               if (request.payload.password) {
                 request.payload = {
                   ...request.payload,

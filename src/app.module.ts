@@ -10,6 +10,11 @@ import { UserModule } from './user/user.module';
 import AdminJS from 'adminjs';
 import { adminOptions, adminAuth } from './admin.options'
 import { DepartmentModule } from './department/department.module';
+import { EntryModule } from './entry/entry.module';
+import { TaskModule } from './task/task.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 AdminJS.registerAdapter({ Database, Resource })
 
 @Module({
@@ -31,8 +36,13 @@ AdminJS.registerAdapter({ Database, Resource })
       adminJsOptions: adminOptions,
       auth: adminAuth
     }),
+    ConfigModule.forRoot({}),
+    ScheduleModule.forRoot(),
+    AuthModule,
     UserModule,
-    DepartmentModule
+    DepartmentModule,
+    EntryModule,
+    TaskModule
   ],
   controllers: [AppController],
   providers: [AppService],

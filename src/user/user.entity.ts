@@ -1,6 +1,7 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn, RelationId } from 'typeorm';
 import { UserRoleType } from './user-role.type';
 import { Department } from '../department/department.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class User extends BaseEntity {
@@ -11,6 +12,7 @@ export class User extends BaseEntity {
   username: string;
 
   @Column({nullable: false})
+  @Exclude()
   password: string;
 
   @Column({type: 'boolean', default: true })
@@ -21,12 +23,11 @@ export class User extends BaseEntity {
     enum: UserRoleType,
     default: UserRoleType.Moderator
   })
-  role: UserRoleType
+  role: UserRoleType;
 
-  @ManyToOne(
-    () => Department, department => department.id,
-    { onUpdate: 'CASCADE', onDelete: 'CASCADE' }
-    )
-  @JoinColumn({name: 'department_title', referencedColumnName: 'title'})
-  department: Department
+  @ManyToOne(() => Department, department => department.users)
+  department: Department;
+
+  @RelationId((user: User) => user.department)
+  departmentId: number;
 }

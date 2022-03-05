@@ -11,11 +11,11 @@ export class DepartmentService {
   ) {}
 
   getOneDepartmentById(id: number): Promise<Department> {
-    return this.departmentRepository.findOne(id, {relations: ['user']})
+    return this.departmentRepository.findOne(id, {relations: ['users']})
   }
 
-  getAllRepositories(): Promise<Department[]> {
-    return this.departmentRepository.find()
+  getAllDepartments(): Promise<Department[]> {
+    return this.departmentRepository.find({relations: ['users']})
   }
 
 }
