@@ -15,6 +15,7 @@ import { TaskModule } from './task/task.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { ExhibitionModule } from './exhibition/exhibition.module';
 AdminJS.registerAdapter({ Database, Resource })
 
 @Module({
@@ -42,7 +43,8 @@ AdminJS.registerAdapter({ Database, Resource })
     UserModule,
     DepartmentModule,
     EntryModule,
-    TaskModule
+    TaskModule,
+    ExhibitionModule
   ],
   controllers: [AppController],
   providers: [AppService],
