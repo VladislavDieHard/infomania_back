@@ -20,7 +20,7 @@ export class ExhibitionController {
 
   @Get()
   getExhibitions() {
-    return this.client.send('getExhibitions', {message: 'data was delivered into microservice'});
+    return this.client.send('extractExhibition', {message: 'data was delivered into microservice'});
   }
 
   @Post()
