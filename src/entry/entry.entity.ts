@@ -22,8 +22,8 @@ export class Entry extends BaseEntity {
   @Column({ unique: true, nullable: false })
   slug: string;
 
-  // @Column()
-  // preview: string;
+  @Column()
+  preview: string;
 
   // @Column()
   // rubric: Rubric

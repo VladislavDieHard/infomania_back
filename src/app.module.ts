@@ -18,28 +18,30 @@ import { ConfigModule } from '@nestjs/config';
 import { ExhibitionModule } from './exhibition/exhibition.module';
 import { UploadModule } from './upload/upload.module';
 import { MinioModule } from './minio/minio.module';
+import { Config } from './config';
+
 AdminJS.registerAdapter({ Database, Resource })
 
 @Module({
   imports: [
+    ConfigModule.forRoot({}),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'static'),
     }),
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'example',
-      database: 'infomania_db',
-      synchronize: true,
-      autoLoadEntities: true
+      type: Config.DB_OPTIONS.type,
+      host: Config.DB_OPTIONS.host,
+      port: Config.DB_OPTIONS.port,
+      username: Config.DB_OPTIONS.username,
+      password: Config.DB_OPTIONS.password,
+      database: Config.DB_OPTIONS.database,
+      synchronize: Config.DB_OPTIONS.synchronize,
+      autoLoadEntities: Config.DB_OPTIONS.autoLoadEntities
     }),
     AdminModule.createAdmin({
       adminJsOptions: adminOptions,
       auth: adminAuth
     }),
-    ConfigModule.forRoot({}),
     ScheduleModule.forRoot(),
     AuthModule,
     UserModule,

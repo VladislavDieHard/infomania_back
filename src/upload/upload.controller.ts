@@ -11,10 +11,10 @@ export class UploadController {
 
   @Post()
   @UseInterceptors(FileFieldsInterceptor(UploadFields))
-  uploadFile(@UploadedFiles() uploadData: UploadType) {
+  async uploadFile(@UploadedFiles() uploadData: UploadType) {
     if (!(<any>Object).values(UploadFilesName).includes(Object.keys(uploadData)[0])) return HttpStatus.BAD_REQUEST
     const file = uploadData[Object.keys(uploadData)[0]][0]
-    return this.uploadService.handleFile(file)
+    return await this.uploadService.handleFile(file)
   }
 
 }
