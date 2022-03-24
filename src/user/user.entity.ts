@@ -1,7 +1,9 @@
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn, RelationId } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { UserRoleType } from './user-role.type';
 import { Department } from '../department/department.entity';
 import { Exclude } from 'class-transformer';
+import { Entry } from '../entry/entry.entity';
+import { Menu } from '../menu/entities/menu.entity';
 
 @Entity()
 export class User extends BaseEntity {
@@ -28,6 +30,12 @@ export class User extends BaseEntity {
   @ManyToOne(() => Department, department => department.users)
   department: Department;
 
-  @RelationId((user: User) => user.department)
-  departmentId: number;
+  // @RelationId((user: User) => user.department)
+  // departmentId: number;
+
+  @OneToMany(() => Entry, entry => entry.author)
+  entries: Entry[];
+
+  @ManyToOne(() => Menu, menu => menu.author)
+  menus: Menu[];
 }

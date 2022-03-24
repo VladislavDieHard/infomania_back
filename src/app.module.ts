@@ -19,6 +19,8 @@ import { ExhibitionModule } from './exhibition/exhibition.module';
 import { UploadModule } from './upload/upload.module';
 import { MinioModule } from './minio/minio.module';
 import { Config } from './config';
+import { RubricModule } from './rubric/rubric.module';
+import { MenuModule } from './menu/menu.module';
 
 AdminJS.registerAdapter({ Database, Resource })
 
@@ -50,7 +52,9 @@ AdminJS.registerAdapter({ Database, Resource })
     TaskModule,
     ExhibitionModule,
     UploadModule,
-    MinioModule
+    MinioModule,
+    RubricModule,
+    MenuModule
   ],
   controllers: [AppController],
   providers: [AppService],
