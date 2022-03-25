@@ -28,7 +28,8 @@ export class UserService {
     const saltOrRounds = 10;
     const user: CreateUserDto = {
       username: newUser.username,
-      password: await bcrypt.hash(newUser.password, saltOrRounds)
+      password: await bcrypt.hash(newUser.password, saltOrRounds),
+      role: newUser.role
     }
     return this.userRepository.save(user)
   }

@@ -24,7 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Infomania](http://infomania.ru) back-end application
 
 ## Installation
 
@@ -43,6 +43,19 @@ $ yarn run start:dev
 
 # production mode
 $ yarn run start:prod
+```
+
+## Commands
+
+When you install all deps and run app, in main directory you can use commands.
+
+Examples:
+```bash
+# command list
+$ node cli list
+
+# create admin user
+$ node cli create:user
 ```
 
 ## Test

@@ -21,6 +21,8 @@ import { MinioModule } from './minio/minio.module';
 import { Config } from './config';
 import { RubricModule } from './rubric/rubric.module';
 import { MenuModule } from './menu/menu.module';
+import { CommanderModule } from './commander/commander.module';
+import { ConsoleModule } from '@squareboat/nest-console';
 
 AdminJS.registerAdapter({ Database, Resource })
 
@@ -54,7 +56,9 @@ AdminJS.registerAdapter({ Database, Resource })
     UploadModule,
     MinioModule,
     RubricModule,
-    MenuModule
+    MenuModule,
+    CommanderModule,
+    ConsoleModule
   ],
   controllers: [AppController],
   providers: [AppService],

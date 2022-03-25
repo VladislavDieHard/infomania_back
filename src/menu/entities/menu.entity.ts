@@ -1,5 +1,6 @@
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from '../../user/user.entity';
+import { MenuItem } from './menu_item.entity';
 
 
 @Entity()
@@ -18,4 +19,7 @@ export class Menu extends BaseEntity {
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP"})
   date_of_edit: Date;
+
+  @OneToMany(() => MenuItem, menuItem => menuItem.menu)
+  menu_items: MenuItem;
 }
