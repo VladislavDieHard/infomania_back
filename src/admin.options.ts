@@ -2,6 +2,10 @@ import { User } from './user/user.entity';
 import * as bcrypt from 'bcrypt'
 import { UserRoleType } from './user/user-role.type';
 import { Department } from './department/department.entity';
+import { Rubric } from './rubric/rubric.entity';
+import { Menu } from './menu/entities/menu.entity';
+import { MenuItem } from './menu/entities/menu_item.entity';
+import { Entry } from './entry/entry.entity';
 
 const adminOptions = {
     rootPath: '/admin',
@@ -46,7 +50,11 @@ const adminOptions = {
         }
       }
     },
-      Department
+      Department,
+      Rubric,
+      Menu,
+      MenuItem,
+      Entry
     ],
     branding: {
       softwareBrothers: false,
