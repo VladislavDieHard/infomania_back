@@ -1,12 +1,18 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import { RubricService } from './rubric.service';
+import { CreateRubricDto } from './dto/create-rubric.dto';
 
-@Controller('rubric')
+@ApiTags('rubrics')
+@Controller('rubrics')
 export class RubricController {
-  constructor() {}
+  constructor(
+    private rubricService: RubricService
+  ) {}
 
   @Get()
   getRubrics() {
-
+    return this.rubricService.getRubrics();
   }
 
   @Get()
@@ -14,14 +20,14 @@ export class RubricController {
 
   }
 
-  @Get()
-  getRubricMetaData() {
-
+  @Get(':id')
+  getRubricMetaData(@Param('id') id: number) {
+    return id
   }
 
   @Post()
-  createRubric() {
-
+  createRubric(@Body() newRubricData: CreateRubricDto) {
+    return this.rubricService.createRubric(newRubricData)
   }
 
   @Put()

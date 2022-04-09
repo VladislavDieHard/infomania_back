@@ -9,6 +9,7 @@ import { Entry } from './entry.entity';
     TypeOrmModule.forFeature([Entry])
   ],
   controllers: [EntryController],
-  providers: [EntryService]
+  providers: [EntryService],
+  exports: [EntryService]
 })
 export class EntryModule {}
