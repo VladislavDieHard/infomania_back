@@ -48,7 +48,7 @@ export class RubricService {
     })
     newRubric.entries = await this.entryService.getEntryById(newRubricData.entries)
     // @ts-ignore
-    newRubric.menu_item = newRubricData.menu_item
+    newRubric.menu_item = await this.menu
 
     try {
       return await this.rubricRepository.save(newRubric)
